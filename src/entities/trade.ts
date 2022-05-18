@@ -193,6 +193,8 @@ export class Trade {
         ? CurrencyAmount.ether(amounts[0].raw)
         : route.input === FANTOM && route.chainId === ChainId.FANTOM
         ? CurrencyAmount.fantom(amounts[0].raw)
+        : route.input === NBX && route.chainId === ChainId.NEBULA
+        ? CurrencyAmount.nebula(amounts[0].raw)
         : amounts[0]
     this.outputAmount =
       tradeType === TradeType.EXACT_OUTPUT
@@ -201,6 +203,8 @@ export class Trade {
         ? CurrencyAmount.ether(amounts[amounts.length - 1].raw)
         : route.output === FANTOM && route.chainId === ChainId.FANTOM
         ? CurrencyAmount.fantom(amounts[amounts.length - 1].raw)
+        : route.output === NBX && route.chainId === ChainId.NEBULA
+        ? CurrencyAmount.nebula(amounts[amounts.length - 1].raw)
         : amounts[amounts.length - 1]
     this.executionPrice = new Price(
       this.inputAmount.currency,
