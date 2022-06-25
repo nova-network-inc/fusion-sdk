@@ -51,8 +51,8 @@ import { Pool } from '@uniswap/sdk'
 
 ## Currently Supported Networks
 
-87: Nova Network
-107: Nebula Testnet
-250: Fantom Opera
+87: Nova Network  
+107: Nebula Testnet  
+250: Fantom Opera  
 
 You can further add new networks by changing the SDK manually.
