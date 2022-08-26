@@ -21,23 +21,21 @@ export enum Rounding {
   ROUND_UP
 }
 
-// Nova Network
-export const FACTORY_ADDRESS = '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55'
-export const INIT_CODE_HASH = '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07'
-
-// Nebula Testnet
-export const NEBULA_FACTORY_ADDRESS = '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55'
-export const NEBULA_INIT_CODE_HASH = '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07'
-
-// Fantom Opera
-export const FANTOM_FACTORY_ADDRESS = '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55'
-export const FANTOM_INIT_CODE_HASH = '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07'
-
-// Ethereum Classic
-export const ETC_FACTORY_ADDRESS = '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55'
-export const ETC_INIT_CODE_HASH = '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07'
-
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
+
+export const FACTORY_ADDRESSES: { [chainId in ChainId]: string } = {
+  [ChainId.NOVA]: '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55',
+  [ChainId.NEBULA]: '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55',
+  [ChainId.FANTOM]: '0x9550b0c83AD5a58898cD4267987Af67e7E52bF55',
+  [ChainId.ETC]: '0x9fAEd210e14F95a15b89C0D09D1a55519aC2F26d'
+}
+
+export const INIT_CODE_HASHES: { [chainId in ChainId]: string } = {
+  [ChainId.NOVA]: '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07',
+  [ChainId.NEBULA]: '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07',
+  [ChainId.FANTOM]: '0x6e898add6d04d6443c8d2544bc82ca8351779bf4ae92a6e7a5d313be8603ea07',
+  [ChainId.ETC]: '0x885e86a743b8d54b3c16187b06b0eea701d44b20ab63bcc097fe2bfcd6b36584'
+}
 
 // exports for internal consumption
 export const ZERO = JSBI.BigInt(0)
