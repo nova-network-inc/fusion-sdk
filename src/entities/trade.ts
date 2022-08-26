@@ -1,8 +1,7 @@
 import invariant from 'tiny-invariant'
-
 import { ChainId, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
-import { Currency, ETHER, FANTOM, NBX } from './currency'
+import { Currency, ETHER, FANTOM, NBX, ETC } from './currency'
 import { CurrencyAmount } from './fractions/currencyAmount'
 import { Fraction } from './fractions/fraction'
 import { Percent } from './fractions/percent'
@@ -92,7 +91,8 @@ function wrappedAmount(currencyAmount: CurrencyAmount, chainId: ChainId): TokenA
   if (
     (currencyAmount.currency === ETHER && chainId === ChainId.NOVA) ||
     (currencyAmount.currency === FANTOM && chainId === ChainId.FANTOM) ||
-    (currencyAmount.currency === NBX && chainId === ChainId.NEBULA)
+    (currencyAmount.currency === NBX && chainId === ChainId.NEBULA) ||
+    (currencyAmount.currency === ETC && chainId === ChainId.ETC)
   )
     return new TokenAmount(WETH[chainId], currencyAmount.raw)
   invariant(false, 'CURRENCY')
@@ -103,7 +103,8 @@ function wrappedCurrency(currency: Currency, chainId: ChainId): Token {
   if (
     (currency === ETHER && chainId === ChainId.NOVA) ||
     (currency === FANTOM && chainId === ChainId.FANTOM) ||
-    (currency === NBX && chainId === ChainId.NEBULA)
+    (currency === NBX && chainId === ChainId.NEBULA) ||
+    (currency === ETC && chainId === ChainId.ETC)
   )
     return WETH[chainId]
   invariant(false, 'CURRENCY')
@@ -195,6 +196,8 @@ export class Trade {
         ? CurrencyAmount.fantom(amounts[0].raw)
         : route.input === NBX && route.chainId === ChainId.NEBULA
         ? CurrencyAmount.nebula(amounts[0].raw)
+        : route.input === ETC && route.chainId === ChainId.ETC
+        ? CurrencyAmount.etc(amounts[0].raw)
         : amounts[0]
     this.outputAmount =
       tradeType === TradeType.EXACT_OUTPUT
@@ -205,6 +208,8 @@ export class Trade {
         ? CurrencyAmount.fantom(amounts[amounts.length - 1].raw)
         : route.output === NBX && route.chainId === ChainId.NEBULA
         ? CurrencyAmount.nebula(amounts[amounts.length - 1].raw)
+        : route.output === ETC && route.chainId === ChainId.ETC
+        ? CurrencyAmount.etc(amounts[amounts.length - 1].raw)
         : amounts[amounts.length - 1]
     this.executionPrice = new Price(
       this.inputAmount.currency,
@@ -235,6 +240,8 @@ export class Trade {
         ? CurrencyAmount.fantom(slippageAdjustedAmountOut)
         : chainId === ChainId.NEBULA
         ? CurrencyAmount.nebula(slippageAdjustedAmountOut)
+        : chainId === ChainId.ETC
+        ? CurrencyAmount.etc(slippageAdjustedAmountOut)
         : CurrencyAmount.ether(slippageAdjustedAmountOut)
     }
   }
@@ -255,6 +262,8 @@ export class Trade {
         ? CurrencyAmount.fantom(slippageAdjustedAmountIn)
         : chainId === ChainId.NEBULA
         ? CurrencyAmount.nebula(slippageAdjustedAmountIn)
+        : chainId === ChainId.ETC
+        ? CurrencyAmount.etc(slippageAdjustedAmountIn)
         : CurrencyAmount.ether(slippageAdjustedAmountIn)
     }
   }

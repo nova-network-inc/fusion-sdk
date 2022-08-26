@@ -1,5 +1,5 @@
 import { currencyEquals } from '../token'
-import { Currency, ETHER, FANTOM, NBX } from '../currency'
+import { Currency, ETHER, FANTOM, NBX, ETC } from '../currency'
 import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 import _Big from 'big.js'
@@ -28,6 +28,10 @@ export class CurrencyAmount extends Fraction {
 
   public static nebula(amount: BigintIsh): CurrencyAmount {
     return new CurrencyAmount(NBX, amount)
+  }
+
+  public static etc(amount: BigintIsh): CurrencyAmount {
+    return new CurrencyAmount(ETC, amount)
   }
 
   // amount _must_ be raw, i.e. in the native representation
