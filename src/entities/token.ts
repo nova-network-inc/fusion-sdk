@@ -60,5 +60,5 @@ export const WETH = {
   [ChainId.NOVA]: new Token(ChainId.NOVA, '0x657a66332A65B535Da6C5d67b8cD1D410c161a08', 18, 'WSNT', 'Wrapped SNT'),
   [ChainId.FANTOM]: new Token(ChainId.FANTOM, '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83', 18, 'WFTM', 'Wrapped FTM'),
   [ChainId.NEBULA]: new Token(ChainId.NEBULA, '0x7e2D6Ac6cEAAa20a3Cc4CA4c1b0dFC6b95332A9d', 18, 'WNBX', 'Wrapped NBX'),
-  [ChainId.ETC]: new Token(ChainId.ETC, '0x82A618305706B14e7bcf2592D4B9324A366b6dAd', 18, 'WETC', 'Wrapped ETC')
+  [ChainId.ETC]: new Token(ChainId.ETC, '0x1953cab0E5bFa6D4a9BaD6E05fD46C1CC6527a5a', 18, 'WETC', 'Wrapped ETC')
 }
